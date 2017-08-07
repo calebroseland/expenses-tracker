@@ -88,18 +88,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\css\main.scss" />
-    <Content Include="assets\dist\448c34a56d699c29117adc64c43affeb.woff2" />
-    <Content Include="assets\dist\89889688147bd7575d6327160d64e760.svg" />
-    <Content Include="assets\dist\bootstrap.css" />
-    <Content Include="assets\dist\bootstrap.js" />
-    <Content Include="assets\dist\e18bbf611f2a2e43afc071aa2f4e1512.ttf" />
-    <Content Include="assets\dist\f4769f9bdb7466be65088239c12046d1.eot" />
-    <Content Include="assets\dist\fa2772327f55d8198301fdb8bcfc8158.woff" />
-    <Content Include="assets\dist\main.css" />
-    <Content Include="assets\dist\main.js" />
-    <Content Include="assets\js\main.js" />
-    <Content Include="assets\js\vendors.js" />
+    <Content Include="assets\css\**" />
+    <Content Include="assets\js\**" />
+    <Content Include="assets\dist\.gitignore" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
