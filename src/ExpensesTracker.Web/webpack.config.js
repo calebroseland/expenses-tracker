@@ -26,6 +26,14 @@ module.exports = {
     module: {
         loaders: [
             {
+                test: /\.css$/,
+                use: extractCSS.extract(['css-loader', 'postcss-loader'])
+            },
+            {
+                test: /\.less$/i,
+                use: extractCSS.extract(['css-loader', 'less-loader'])
+            },
+            {
                 test: /\.scss$/,
                 use: extractCSS.extract(['css-loader', 'sass-loader'])
             },
@@ -34,14 +42,14 @@ module.exports = {
                 use: 'url-loader?limit=10000',
             },
             {
-                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                test: /\.(ttf|eot|svg|gif|png)(\?[\s\S]+)?$/,
                 use: 'file-loader',
             },
             {
                 test: /bootstrap-sass(\\|\/)assets(\\|\/)javascripts(\\|\/)/,
-                use: 'imports-loader?jQuery=jquery'
+                use: 'imports-loader'
             }
         ]
     },
-    plugins: [ extractCSS ]
+    plugins: [extractCSS]
 };
