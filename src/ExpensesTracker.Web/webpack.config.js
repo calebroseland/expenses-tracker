@@ -8,7 +8,7 @@ const extractCSS = new ExtractTextPlugin("[name].css");
 
 module.exports = {
     entry: {
-        bootstrap: "bootstrap-loader/extractStyles",
+        vendors: "./assets/js/vendors.js",
         main: [
             "./assets/css/main.scss",
             "./assets/js/main.js"
