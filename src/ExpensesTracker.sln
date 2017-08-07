@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker", "ExpensesTracker.Web\ExpensesTracker.Web.csproj", "{222E2B38-461E-4FEF-8E4E-88ACE3300284}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker.Web", "ExpensesTracker.Web\ExpensesTracker.Web.csproj", "{222E2B38-461E-4FEF-8E4E-88ACE3300284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker.Domain", "ExpensesTracker.Domain\ExpensesTracker.Domain.csproj", "{2A666B2D-DC6E-4064-84B4-C44B303497E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker.Persistence", "ExpensesTracker.Persistence\ExpensesTracker.Persistence.csproj", "{235015EB-9EA0-40FB-AABE-9EEE5384EDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker.Tests", "ExpensesTracker.Tests\ExpensesTracker.Tests.csproj", "{627D2D08-01A9-44F8-8B35-CC758BC6B2B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpensesTracker.Business", "ExpensesTracker.Business\ExpensesTracker.Business.csproj", "{A571EFD6-AC17-4838-8F04-CB51D353454D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{222E2B38-461E-4FEF-8E4E-88ACE3300284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{222E2B38-461E-4FEF-8E4E-88ACE3300284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{222E2B38-461E-4FEF-8E4E-88ACE3300284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A666B2D-DC6E-4064-84B4-C44B303497E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A666B2D-DC6E-4064-84B4-C44B303497E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A666B2D-DC6E-4064-84B4-C44B303497E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A666B2D-DC6E-4064-84B4-C44B303497E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{235015EB-9EA0-40FB-AABE-9EEE5384EDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{235015EB-9EA0-40FB-AABE-9EEE5384EDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{235015EB-9EA0-40FB-AABE-9EEE5384EDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{235015EB-9EA0-40FB-AABE-9EEE5384EDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{627D2D08-01A9-44F8-8B35-CC758BC6B2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{627D2D08-01A9-44F8-8B35-CC758BC6B2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{627D2D08-01A9-44F8-8B35-CC758BC6B2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{627D2D08-01A9-44F8-8B35-CC758BC6B2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A571EFD6-AC17-4838-8F04-CB51D353454D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A571EFD6-AC17-4838-8F04-CB51D353454D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A571EFD6-AC17-4838-8F04-CB51D353454D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A571EFD6-AC17-4838-8F04-CB51D353454D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

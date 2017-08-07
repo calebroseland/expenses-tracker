@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   namespace="ExpensesTracker.Domain.Entities"
+                   assembly="ExpensesTracker.Domain">
+  <class name="AccountEntry">
+    <id name="Id" generator="guid.comb" />
+    <property name="Description" />
+    <property name="Value" not-null="true" />
+    <property name="Date" not-null="true" />
+    <many-to-one name="Account" column="AccountId" />
+    <many-to-one name="Category" column="CategoryId" />
+  </class>
+</hibernate-mapping>
