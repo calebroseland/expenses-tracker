@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expenses Tracker</title>
-    <link href="~/assets/dist/vendors.css" rel="stylesheet" />
-    <link href="~/assets/dist/main.css" rel="stylesheet" />
+    <link href="@Url.DistributionFile("vendors.css")" rel="stylesheet" />
+    <link href="@Url.DistributionFile("main.js")" rel="stylesheet" />
 </head>
 <body>
 
@@ -33,8 +33,8 @@
         </footer>
     </div>
 
-    <script src="~/assets/dist/vendors.js"></script>
-    <script src="~/assets/dist/main.js"></script>
+    <script src="@Url.DistributionFile("vendors.js")"></script>
+    <script src="@Url.DistributionFile("main.js")"></script>
 
     @Html.Kendo().DeferredScripts()
 

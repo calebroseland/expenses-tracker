@@ -2,8 +2,10 @@
 
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
-const extractCSS = new ExtractTextPlugin("[name].css");
+const extractCSS = new ExtractTextPlugin("[name].[chunkhash].css");
+const statsWriter = new StatsWriterPlugin({ filename: "stats.json" });
 
 module.exports = {
     entry: {
@@ -14,7 +16,7 @@ module.exports = {
         ]
     },
     output: {
-        filename: "[name].js",
+        filename: "[name].[chunkhash].js",
         path: path.resolve(__dirname, "assets", "dist")
     },
     devServer: {
@@ -50,5 +52,5 @@ module.exports = {
             }
         ]
     },
-    plugins: [extractCSS]
+    plugins: [extractCSS, statsWriter]
 };
