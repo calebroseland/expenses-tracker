@@ -9,8 +9,10 @@ const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 const extractCSS = new ExtractTextPlugin(debug ? "[name].css" : "[name].[contenthash].css");
 const statsWriter = new StatsWriterPlugin({ filename: "stats.json" });
 
-const prodPlugins = debug ? [] :
-    [new webpack.optimize.UglifyJsPlugin()];
+const prodPlugins = debug ? [] : [
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin()
+];
 
 module.exports = {
     entry: {
