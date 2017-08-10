@@ -4,7 +4,7 @@ const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 
-const extractCSS = new ExtractTextPlugin("[name].[chunkhash].css");
+const extractCSS = new ExtractTextPlugin("[name].[contenthash].css");
 const statsWriter = new StatsWriterPlugin({ filename: "stats.json" });
 
 module.exports = {

@@ -24,7 +24,7 @@ namespace ExpensesTracker.Web
 
         private static Dictionary<string, List<string>> GetStats()
         {
-            if (_stats == null)
+            if (_stats == null || HttpContext.Current.IsDebuggingEnabled)
             {
                 var statsPath = HttpContext.Current.Server.MapPath(DISTFOLDER + "stats.json");
                 _stats = JsonConvert.DeserializeObject<StatsFile>(File.ReadAllText(statsPath)).AssetsByChunkName;
