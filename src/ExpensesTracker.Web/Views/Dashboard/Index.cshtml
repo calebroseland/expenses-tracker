@@ -1,3 +1,5 @@
 ﻿<input type="text" id="date" name="date">
 
-@Html.Kendo().DatePicker().Name("date-from-kendo-wrapper").Deferred()
+@section scripts {
+    <script src="@Url.DistributionFile("dashboard.js")"></script>
+}

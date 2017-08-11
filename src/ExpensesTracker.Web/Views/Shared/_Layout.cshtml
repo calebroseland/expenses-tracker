@@ -20,7 +20,10 @@
                 @Html.ActionLink("Expenses Tracker", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                    <li><a href="@Url.Action("Index", "About")">About</a></li>
+                </ul>
             </div>
         </div>
     </div>

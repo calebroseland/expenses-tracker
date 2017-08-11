@@ -1,13 +1,19 @@
 ﻿"use strict";
 
 const debug = process.env.NODE_ENV !== "production";
+
 const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
+const CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 const extractCSS = new ExtractTextPlugin(debug ? "[name].css" : "[name].[contenthash].css");
 const statsWriter = new StatsWriterPlugin({ filename: "stats.json" });
+const commons = new CommonsChunkPlugin({
+    name: "main",
+    chunks: ["dashboard", "about"]
+});
 
 const prodPlugins = debug ? [] : [
     new webpack.optimize.UglifyJsPlugin(),
@@ -17,6 +23,8 @@ const prodPlugins = debug ? [] : [
 module.exports = {
     entry: {
         vendors: "./assets/js/vendors.js",
+        dashboard: ['./assets/js/pages/dashboard.js'],
+        about: ['./assets/js/pages/about.js'],
         main: [
             "./assets/css/main.scss",
             "./assets/js/main.js"
@@ -32,14 +40,44 @@ module.exports = {
         port: 9000
     },
     module: {
-        loaders: [
-            { test: /\.css$/, use: extractCSS.extract(['css-loader', 'postcss-loader']) },
-            { test: /\.less$/, use: extractCSS.extract(['css-loader', 'less-loader']) },
-            { test: /\.scss$/, use: extractCSS.extract(['css-loader', 'sass-loader']) },
-            { test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/, use: 'url-loader?limit=10000', },
-            { test: /\.(ttf|eot|svg|gif|png)(\?[\s\S]+)?$/, use: 'file-loader', },
-            { test: /bootstrap-sass(\\|\/)assets(\\|\/)javascripts(\\|\/)/, use: 'imports-loader' }
+        rules: [
+            {
+                test: /\.css$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'postcss-loader']
+                })
+            },
+            {
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'less-loader']
+                })
+            },
+            {
+                test: /\.scss$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: { limit: 1000 }
+                }]
+            },
+            {
+                test: /\.(ttf|eot|svg|gif|png)(\?[\s\S]+)?$/,
+                use: [{ loader: 'file-loader' }]
+            },
+            {
+                test: /bootstrap-sass(\\|\/)assets(\\|\/)javascripts(\\|\/)/,
+                use: [{ loader: 'imports-loader' }]
+            }
         ]
     },
-    plugins: [extractCSS, statsWriter, ...prodPlugins]
+    plugins: [extractCSS, commons, statsWriter, ...prodPlugins]
 };

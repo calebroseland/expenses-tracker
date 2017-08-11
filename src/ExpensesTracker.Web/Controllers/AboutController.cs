@@ -2,7 +2,7 @@
 
 namespace ExpensesTracker.Web.Controllers
 {
-    public class DashboardController : Controller
+    public class AboutController : Controller
     {
         public ActionResult Index()
         {

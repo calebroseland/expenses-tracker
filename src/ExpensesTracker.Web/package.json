@@ -2,8 +2,7 @@
   "version": "1.0.0",
   "name": "expensestracker",
   "private": true,
-  "devDependencies": {},
-  "dependencies": {
+  "devDependencies": {
     "@progress/kendo-ui": "^2017.2.621",
     "jquery": "^3.2.1",
     "jquery-validation": "^1.17.0",

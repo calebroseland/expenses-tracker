@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -12,30 +11,35 @@ namespace ExpensesTracker.Web
     {
         private const string DISTFOLDER = "~/assets/dist/";
 
-        private static Dictionary<string, List<string>> _stats;
+        private static dynamic _stats;
 
         public static string DistributionFile(this UrlHelper helper, string filename)
         {
-            var stats = GetStats();
-            var nameWithoutExtension = Path.GetFileNameWithoutExtension(filename);
-            var realFilename = stats[nameWithoutExtension].First(x => x.EndsWith(Path.GetExtension(filename)));
+            var vendor = Path.GetFileNameWithoutExtension(filename);
+            var realFilename = GetFileName(vendor, Path.GetExtension(filename));
             return helper.Content(DISTFOLDER + realFilename);
         }
 
-        private static Dictionary<string, List<string>> GetStats()
+        private static dynamic GetStats()
         {
             if (_stats == null || HttpContext.Current.IsDebuggingEnabled)
             {
                 var statsPath = HttpContext.Current.Server.MapPath(DISTFOLDER + "stats.json");
-                _stats = JsonConvert.DeserializeObject<StatsFile>(File.ReadAllText(statsPath)).AssetsByChunkName;
+                _stats = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(statsPath)).assetsByChunkName;
             }
 
             return _stats;
         }
 
-        private class StatsFile
+        private static string GetFileName(string vendor, string extension)
         {
-            public Dictionary<string, List<string>> AssetsByChunkName { get; set; }
+            var files = GetStats()[vendor];
+            if (files.GetType() == typeof(JValue))
+            {
+                return files.ToString();
+            }
+
+            return ((JArray)files).First(x => x.ToString().EndsWith(extension)).ToString();
         }
     }
 }
