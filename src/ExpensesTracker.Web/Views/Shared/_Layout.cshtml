@@ -22,6 +22,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
+                    <li><a href="@Url.Action("Index", "Designer")">Designer</a></li>
                     <li><a href="@Url.Action("Index", "About")">About</a></li>
                 </ul>
             </div>
@@ -38,9 +39,7 @@
 
     <script src="@Url.DistributionFile("vendors.js")"></script>
     <script src="@Url.DistributionFile("main.js")"></script>
-
     @Html.Kendo().DeferredScripts()
-
     @RenderSection("scripts", required: false)
 
 </body>

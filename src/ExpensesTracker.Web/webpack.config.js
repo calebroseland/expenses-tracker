@@ -25,6 +25,7 @@ module.exports = {
         vendors: "./assets/js/vendors.js",
         dashboard: ['./assets/js/pages/dashboard.js'],
         about: ['./assets/js/pages/about.js'],
+        designer: ['./assets/designer/index.js'],
         main: [
             "./assets/css/main.scss",
             "./assets/js/main.js"
@@ -41,6 +42,30 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules)/,
+                use: {
+                    loader: 'babel-loader'
+                }
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                // options required to work with autoprefixer
+                options: {
+                    loaders: {
+                        'css': 'vue-style-loader!css-loader?autoprefixer',
+                        'sass': 'vue-style-loader!css-loader?autoprefixer!sass-loader?indentedSyntax',
+                        'scss': 'vue-style-loader!css-loader?autoprefixer!sass-loader'
+                    },
+                    postcss: [
+                      require('autoprefixer')({
+                          browsers: ['last 3 versions', 'ie > 8'] // Vue does not support ie 8 and below
+                      })
+                    ]
+                }
+            },
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
